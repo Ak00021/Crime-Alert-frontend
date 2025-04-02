@@ -1,0 +1,57 @@
+/* Style for the navbar container */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  align-items: center;
+  gap: 480px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px 5px 10px 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000; 
+}
+
+/* Style for the title */
+.navbar .title {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Style for the navbar links */
+.navbar .navbar-content {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .navbar-content div {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar .navbar-content div:hover {
+  color: #aaa;
+}
+
+/* Style for the login section */
+.navbar .login {
+  display: flex;
+  gap: 15px;
+}
+
+.navbar .login div {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navbar .login div:hover {
+  color: #aaa;
+}
+.login{
+  margin-left:5px ;
+}

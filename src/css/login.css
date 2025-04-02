@@ -1,0 +1,80 @@
+.login-container {
+  max-width: 400px; /* Compact width for the container */
+  margin: 120px auto; /* Centered vertically and horizontally */
+  padding: 30px; /* Balanced padding */
+  border-radius: 12px; /* Softer rounded corners */
+  background: linear-gradient(135deg, #ffffff, #e6e9f0); /* Subtle gradient for a modern look */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 26px; /* Slightly larger font size */
+  color: #333;
+  font-weight: bold;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column; /* Stack label and input vertically */
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 8px; /* Add spacing between label and input */
+  font-weight: bold;
+  color: #555;
+  font-size: 14px;
+}
+
+input {
+  width: 100%; /* Ensure input takes full width */
+  padding: 12px; /* Increased padding for better usability */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Softer corners */
+  font-size: 14px;
+  box-sizing: border-box; /* Ensure padding and borders are included in the width */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Enhanced focus effect */
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 14px; /* Balanced padding */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px; /* Softer corners */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.03); /* Slight scaling effect */
+}
+
+button:active {
+  background-color: #004085;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Add consistent spacing between form elements */
+}
+
+.login-container form .form-group:last-child {
+  margin-bottom: 0;
+}

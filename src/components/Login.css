@@ -1,0 +1,234 @@
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 64px - 400px); /* Adjust based on header and footer height */
+    padding: 3rem 1rem;
+    background-color: var(--background-color);
+  }
+  
+  .auth-container {
+    width: 100%;
+    max-width: 450px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+  }
+  
+  .auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .auth-header h1 {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .auth-header p {
+    color: var(--text-color);
+    opacity: 0.7;
+  }
+  
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    color: var(--secondary-color);
+  }
+  
+  .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-color);
+    opacity: 0.5;
+  }
+  
+  .input-with-icon input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-with-icon input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+  
+  .input-with-icon input.error {
+    border-color: var(--danger-color);
+  }
+  
+  .error-message {
+    color: var(--danger-color);
+    font-size: 0.875rem;
+  }
+  
+  .password-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .forgot-password {
+    font-size: 0.875rem;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+  }
+  
+  .forgot-password:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+  
+  .password-toggle {
+    position: absolute;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  .password-toggle:hover {
+    opacity: 0.8;
+  }
+  
+  .checkbox-group {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .checkbox-label input {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .auth-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.875rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-button:hover {
+    background-color: #c1272d;
+  }
+  
+  .auth-button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+  }
+  
+  .auth-divider {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    color: var(--text-color);
+    opacity: 0.5;
+  }
+  
+  .auth-divider::before,
+  .auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: var(--border-color);
+  }
+  
+  .auth-divider span {
+    padding: 0 1rem;
+  }
+  
+  .social-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--border-color);
+    background-color: white;
+  }
+  
+  .social-button img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  .social-button.google:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .social-button.facebook {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+  }
+  
+  .social-button.facebook:hover {
+    background-color: #166fe5;
+  }
+  
+  .auth-footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9375rem;
+  }
+  
+  .auth-footer a {
+    color: var(--accent-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .auth-footer a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+  
+  

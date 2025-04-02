@@ -1,0 +1,71 @@
+.crime-map-section {
+    background-color: white;
+  }
+  
+  .map-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .crime-map {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .map-overlay {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .map-legend {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-legend h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+  }
+  
+  .legend-items {
+    list-style: none;
+  }
+  
+  .legend-items li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .legend-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  
+  .theft {
+    background-color: #e63946;
+  }
+  
+  .assault {
+    background-color: #ff9500;
+  }
+  
+  .vandalism {
+    background-color: #457b9d;
+  }
+  
+  .suspicious {
+    background-color: #8338ec;
+  }
+  
+  

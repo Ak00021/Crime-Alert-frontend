@@ -1,11 +1,12 @@
-"use client"
 
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link ,useNavigate} from "react-router-dom"
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa"
+import axios from "axios"
 import "./Login.css"
 
 function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -55,20 +56,34 @@ function Login() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
 
     if (validateForm()) {
       setIsSubmitting(true)
 
-      // Simulate API call
-      setTimeout(() => {
-        console.log("Login submitted:", formData)
-        setIsSubmitting(false)
-        // Here you would typically redirect the user or update app state
-      }, 1500)
+      // seding login data to backend
+      try{
+        let response= await axios.post("http://localhost:4000/user-api/user_login", formData,{
+          headers:{
+            "Content-Type":"application/json"
+          }
+        });
+        console.log("Login response:", response.data);
+        if(response.data.message==="login successful"){
+          console.log("Login successful:", response.data);
+          // Store token in local storage or handle it as needed
+          localStorage.setItem("token", response.data.token);
+          navigate('/');
+
+        }
+      }catch(error){
+        console.error("Error logging in:", error);
+    }finally{
+      setIsSubmitting(false)
     }
   }
+}
 
   return (
     <div className="auth-page">

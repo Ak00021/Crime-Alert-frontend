@@ -1,10 +1,12 @@
 
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaPhone } from "react-icons/fa"
+import axios from "axios"
 import "./Signup.css"
 
 function Signup() {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -80,18 +82,31 @@ function Signup() {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
 
     if (validateForm()) {
       setIsSubmitting(true)
 
-      // Simulate API call
-      setTimeout(() => {
-        console.log("Signup submitted:", formData)
+      // API call to send signup data
+      try{
+        const response=await axios.post("http://localhost:4000/user-api/user_reg", formData,{
+          headers:{
+            "Content-Type":"application/json",
+          }
+        });
+        console.log('singup response:',response.data);
+        if(response.data.message==="user created"){
+          navigate("/login")
+      }
+    }
+      catch(err){
+        console.error("Error during signup:", err);
+        setIsSubmitting(false);
+        return;
+      }finally{
         setIsSubmitting(false)
-        // Here you would typically redirect the user or update app state
-      }, 1500)
+      }
     }
   }
 

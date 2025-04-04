@@ -1,15 +1,21 @@
-"use client"
-
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { FaShieldAlt, FaBars } from "react-icons/fa"
+import {AppContext} from '../context/context.js'
 import "./Header.css"
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
+  const {sessionDetails,setSessionDetails}=useContext(AppContext);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
+  }
+  const handleLogout=()=>{
+    setSessionDetails({login:false});
+    localStorage.removeItem("sessionDetails");
+  }
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false)
   }
 
   return (
@@ -53,15 +59,17 @@ function Header() {
             </li>
           </ul>
         </nav>
-
-        <div className="auth-buttons">
+        {/* {console.log(sessionDetails.fullName)} */}
+        {sessionDetails.login == false ?<div className="auth-buttons">
           <Link to='/login' className="login-button">
             Login
           </Link>
           <Link to='/signup' className="signup-button">
             Sign Up
           </Link>
-        </div>
+        </div>:
+        <div className="auth-buttons"><Link>{sessionDetails.fullName}</Link> <Link className="logout-butt" onClick={handleLogout}>Logout</Link> </div>
+        }
       </div>
     </header>
   )

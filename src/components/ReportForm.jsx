@@ -1,9 +1,13 @@
 
-import { useState } from "react"
+import { useState ,useContext} from "react"
+import {useNavigate} from 'react-router-dom'
 import { FaMapMarkerAlt, FaUsersCog } from "react-icons/fa"
+import axios from "axios"
+import {AppContext} from '../context/context.js'
 import "./ReportForm.css"
 
 function ReportForm() {
+  const navigate=useNavigate();
   const [lat1,setLat1]=useState()
   const [long,setLong1]=useState()
   const [formData, setFormData] = useState({
@@ -15,6 +19,8 @@ function ReportForm() {
     urgency: "non-emergency",
     isAnonymous: false,
   })
+
+  const { sessionDetails } = useContext(AppContext);
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -59,30 +65,26 @@ function ReportForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    setIsSubmitting(true)
+    if(sessionDetails.login==false){
+      alert("Please Login to submit a report")
+      navigate("/login")
+      return;
+    }
+    // setIsSubmitting(true)
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        console.log('submitted',formData)
-        setIsSubmitted(false)
-        setFormData({
-          name: "",
-          contact: "",
-          incidentType: "",
-          location: "",
-          description: "",
-          urgency: "non-emergency",
-          isAnonymous: false,
-        })
-      }, 3000)
-    }, 1500)
+    // sending data to backend
+    // try{
+    //   let response=await axios.post("http://localhost:5000/api/report",{
+    //     ...formData,
+    //     latitude:lat1,
+    //     longitude:long
+    //   })
+    // }catch(error){
+    //   console.error("Error submitting report:", error)
+      
+    // }
   }
 
   return (

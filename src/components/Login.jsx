@@ -1,11 +1,13 @@
-
 import { useState } from "react"
 import { Link ,useNavigate} from "react-router-dom"
-import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa"
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaBullhorn } from "react-icons/fa"
+import { useContext } from "react"
+import  {AppContext}  from "../context/context.js"
 import axios from "axios"
 import "./Login.css"
 
 function Login() {
+  const { sessionDetails, setSessionDetails } = useContext(AppContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -71,7 +73,13 @@ function Login() {
         });
         console.log("Login response:", response.data);
         if(response.data.message==="login successful"){
-          console.log("Login successful:", response.data);
+          setSessionDetails(prevData => ({
+            ...prevData,
+            login: true,
+            fullName: response.data.user.fullName,
+            email: formData.email,
+          }));
+          // console.log("Login successful:", response.data,sessionDetails.login);
           // Store token in local storage or handle it as needed
           localStorage.setItem("token", response.data.token);
           navigate('/');

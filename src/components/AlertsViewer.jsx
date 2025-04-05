@@ -1,6 +1,7 @@
 
 import React , { useEffect, useState } from "react"
 import { FaMapMarkerAlt, FaSearch } from "react-icons/fa"
+import axios from 'axios'
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./AlertsViewer.css"
@@ -17,8 +18,18 @@ function AlertsViewer() {
   const [hasSearched, setHasSearched] = useState(false)
 
   useEffect(()=>{
+    const fun=async()=>{
     handleGetLocation(); 
-  },[]);
+    const API_URL=import.meta.env.VITE_API_URL
+    try{
+      let res=await axios.get(`${API_URL}crime-api/getCrimedata`);
+      console.log(res.data)
+    }catch(error){
+      console.log("error fetching crime details",error);
+    }
+  };
+  fun();
+},[]);
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {

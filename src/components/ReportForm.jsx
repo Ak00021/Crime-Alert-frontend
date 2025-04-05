@@ -72,20 +72,26 @@ function ReportForm() {
       navigate("/login")
       return;
     }
-    // setIsSubmitting(true)
+    setIsSubmitting(true)
 
     // sending data to backend
-    // try{
-    //   let response=await axios.post("http://localhost:5000/api/report",{
-    //     ...formData,
-    //     latitude:lat1,
-    //     longitude:long
-    //   })
-    // }catch(error){
-    //   console.error("Error submitting report:", error)
+    try{
+      let response=await axios.post("http://localhost:4000/crime-api/newCrime",{
+        ...formData,
+        email:sessionDetails.email,
+        latitude:lat1,
+        longitude:long,
+        date: new Date().toISOString(),
+      })
+      // console.log(response.data)
+    }catch(error){
+      console.error("Error submitting report:", error)
       
-    // }
-  }
+    }finally{
+      setIsSubmitting(false)
+      setIsSubmitted(true)
+    }
+      }
 
   return (
     <div className="form-container">

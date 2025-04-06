@@ -12,6 +12,7 @@ import AlertsViewer from "./components/AlertsViewer.jsx"
 import AppContextProvider from "./context/ContextProvider.jsx"
 import "./App.css"
 
+
 function App() {
   return (
     <div className="app">

@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link ,useNavigate} from "react-router-dom"
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash, FaBullhorn } from "react-icons/fa"
 import { useContext } from "react"
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import  {AppContext}  from "../context/context.js"
 import axios from "axios"
 import "./Login.css"
@@ -71,7 +73,8 @@ function Login() {
             "Content-Type":"application/json"
           }
         });
-        console.log("Login response:", response.data);
+        // console.log("Login response:", response.data);
+        toast(response.data.message);
         if(response.data.message==="login successful"){
           setSessionDetails(prevData => ({
             ...prevData,
@@ -185,6 +188,17 @@ function Login() {
           </p>
         </div>
       </div>
+      <ToastContainer 
+                    className="toast-position"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    />
     </div>
   )
 }

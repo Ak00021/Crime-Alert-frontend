@@ -6,6 +6,13 @@
     padding: 3rem 1rem;
     background-color: var(--background-color);
   }
+  .toast-position {
+    top: 20px; /* Adjust as needed */
+    left: calc(50% - 150px); /* Center horizontally with offset */
+    position: fixed;
+    z-index: 9999;
+}
+
   
   .auth-container {
     width: 100%;
@@ -231,4 +238,9 @@
     text-decoration: underline;
   }
   
-  
+  @media (max-width: 768px) {
+    .toast-position {
+        top: 10px;
+        left: 10px;
+    }
+}

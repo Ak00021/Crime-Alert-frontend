@@ -3,6 +3,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash, FaPhone } from "react-icons/fa"
 import axios from "axios"
+import {ToastContainer,toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import "./Signup.css"
 
 function Signup() {
@@ -96,8 +98,12 @@ function Signup() {
           }
         });
         console.log('singup response:',response.data);
+        
         if(response.data.message==="user created"){
+          toast(response.data.message)
+          console.log(response.data.message)
           navigate("/login")
+         
       }
     }
       catch(err){
@@ -260,6 +266,17 @@ function Signup() {
           </p>
         </div>
       </div>
+      <ToastContainer 
+                    className="toast-position"
+                    autoClose={2000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    />
     </div>
   )
 }

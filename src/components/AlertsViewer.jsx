@@ -3,8 +3,20 @@ import React , { useEffect, useState } from "react"
 import { FaMapMarkerAlt, FaSearch } from "react-icons/fa"
 import axios from 'axios'
 import L from "leaflet";
+import "leaflet.awesome-markers";
 import "leaflet/dist/leaflet.css";
+import marker from "../assets/location.png"
 import "./AlertsViewer.css"
+
+const customIcon = L.icon({
+  iconUrl:marker, // URL to your custom marker image
+  iconSize: [25, 41], // Size of the icon
+  iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+  popupAnchor: [1, -34], // Point from where the popup should open relative to the iconAnchor
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png", // Optional shadow
+  shadowSize: [41, 41], // Size of the shadow
+  shadowAnchor: [12, 41] // Anchor of the shadow
+});
 
 function AlertsViewer() {
   const lat=28.6294256;
@@ -46,7 +58,7 @@ function AlertsViewer() {
             );
 
             if (distance <= 5) {
-              alert(`You are within 5km of ${location.name}!`);
+              // alert(`You are within 5km of ${location.name}!`);
               console.log(
                 `Alert: Within 5km of ${location.name}. Distance: ${distance} km`
               );
@@ -92,13 +104,15 @@ function AlertsViewer() {
   
       // Add a marker for the current location
       L.marker([latitude, longitude]).addTo(map).bindPopup("You are here!").openPopup();
+      L.marker([28.626084,77.434778 ],{icon:customIcon}).addTo(map).bindPopup("Crime!").openPopup();
+      L.marker([28.633902,77.450721 ],{icon:customIcon}).addTo(map).bindPopup("Crime!").openPopup();
   
       return () => {
         map.remove(); // Clean up map instance on component unmount
       };
     }, [latitude, longitude]);
   
-    return <div id="map" style={{ height: "400px", width: "600px" }}></div>;
+    return <div id="map" style={{ height: "400px", width: "900px" }}></div>;
   };
 
   const handleSearch = () => {

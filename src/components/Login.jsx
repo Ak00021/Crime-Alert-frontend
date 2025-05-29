@@ -68,7 +68,8 @@ function Login() {
 
       // seding login data to backend
       try{
-        let response= await axios.post("http://localhost:4000/user-api/user_login", formData,{
+          const API_URL=import.meta.env.VITE_API_URL
+        let response= await axios.post(`${API_URL}user-api/user_login`, formData,{
           headers:{
             "Content-Type":"application/json"
           }
